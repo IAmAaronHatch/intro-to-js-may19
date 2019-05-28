@@ -13,16 +13,39 @@
     <h1> Tododododo List </h1>
 
     <script>
+
         const body = document.body;
-        let create = (type, parent) => {
-            const el = document.createElement(type);
+        const create = (type, parent, text) => {
+            let el = document.createElement(type);
             parent.appendChild(el);
+            
+            if( text ) {
+                el.innerText = text;
+            }
+            return el;
         }
 
 
-        create("input", body );
-        create("button", body );
-        create("ul", body );
+        // create("input", body )
+        let input = create('input', body)
+        let submitBtn = create("button", body, 'Submit' );
+        let ul = create("ul", body );
+
+        const newTodo = () => {
+            // console.dir(input.value);
+            // debugger;
+            let value = input.value;
+
+            if(value) {
+                create('li', ul, value);
+                input.value = '';
+            };
+
+        };
+
+        submitBtn.addEventListener('click', newTodo);
+        
+
     </script>
 
 </body>
