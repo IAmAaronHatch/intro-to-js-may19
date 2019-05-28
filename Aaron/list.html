@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
+    <style>
+        li {
+            transition: all 1s ease
+        }
+
+        .checked {
+            text-decoration: line-through;
+        }
+
+        .gray {
+            color: gray;
+        }
+    </style>
 </head>
+
 <body>
 
     <h1> Tododododo List </h1>
@@ -18,8 +33,8 @@
         const create = (type, parent, text) => {
             let el = document.createElement(type);
             parent.appendChild(el);
-            
-            if( text ) {
+
+            if (text) {
                 el.innerText = text;
             }
             return el;
@@ -28,25 +43,43 @@
 
         // create("input", body )
         let input = create('input', body)
-        let submitBtn = create("button", body, 'Submit' );
-        let ul = create("ul", body );
+        let submitBtn = create("button", body, 'Submit');
+        let ul = create("ul", body);
 
         const newTodo = () => {
             // console.dir(input.value);
             // debugger;
             let value = input.value;
 
-            if(value) {
-                create('li', ul, value);
+            if (value) {
+                var li = create('li', ul, value);
+                let checkbox = create('input', li);
+                li.prepend(checkbox);
+
+                checkbox.type = 'checkbox';
+
                 input.value = '';
+
+                checkbox.addEventListener('change', function () {
+
+                    if (this.checked) {
+                        this.parentNode.classList.add('checked');
+                        this.parentNode.classList.add('gray');
+                    } else {
+                        this.parentNode.classList.remove('checked');
+                        this.parentNode.classList.remove('gray');
+                    }
+                });
             };
 
         };
 
         submitBtn.addEventListener('click', newTodo);
-        
+
+
 
     </script>
 
 </body>
+
 </html>
