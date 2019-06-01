@@ -1,4 +1,18 @@
+body ul li {
+    list-style-type: none;
+}
+
+.main-ul {
+}
+
+.item {
+    color: rgb(15, 15, 15);
+    font-size: 30px;
+    display: flex;
+}
+
 .finished {
-    color: rgb(75, 75, 75);
+    color: rgb(114, 114, 114);
     text-decoration: line-through;
+    transition: 0.4s;
 }
