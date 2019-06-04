@@ -29,8 +29,9 @@ const newTodo = () => {
     let value = input.value;
 
     if (value) {
-        let listItem = create('li', list, value);
-        listItem.classList.add('item')
+        let listItem = create(`li`, list, value);
+        // let deleteItem = create(`button`, listItem, `delete`)
+        listItem.classList.add(`item`)
         
         input.value = ``;
 
