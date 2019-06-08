@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Tip Calculator </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <style>
+        [type],
+        .result,
+        h3 {
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="text">
+    <h2 class="result"></h2>
+    <h3></h3>
+
+    <script>
+        const textInput = document.querySelector('[type]');
+        const resultDiv = document.querySelector('.result');
+        const totalDiv = document.querySelector('h3');
+        console.log(textInput, resultDiv);
+
+        textInput.addEventListener('input', function () {
+            const value = parseInt(this.value);
+            console.log(value);
+            if (isNaN(value)) {
+                console.log('isNaN is true')
+            } else {
+                console.log('isNaN is false. do some work');
+                const tip = (Number(this.value) * .15);
+                const tipToFixed = tip.toFixed(2);
+                resultDiv.innerHTML = '$' + tipToFixed;
+                const totalToFixed = (tip + Number(this.value)).toFixed(2);
+                totalDiv.innerHTML = '$' + totalToFixed;
+
+            }
+        })
+
+
+
+
+        // const textInput = document.querySelector(`[type]`);
+        // const resultDiv = document.querySelector(`.result`);
+        // const totalDiv = document.querySelector(`h3`);
+        // console.log(textInput, resultDiv, totalDiv);
+
+        // textInput.addEventListener(`input`, function () {
+        //     const value = parseInt(this.value);
+        //     console.log('val', value);
+        //     if (isNaN(value)) {
+        //         console.log(`isNana is true`);
+        //     } else {
+        //         console.log(`isNan is false, do some work`);
+        //         const tip = (Number(this.value) * .15);
+        //         resultDiv.innerHTML = `$${tip}`;
+        //         resultDiv.innerHTML = `$${tip + value}`;
+
+        //     };
+        // })
+    </script>
+</body>
+
+</html>
