@@ -1,0 +1,17 @@
+body {
+    background-color: rgb(221, 221, 221);
+}
+
+div.container {
+    height: 415px;
+    width: 650px;
+    border: solid black 1px;
+    /* background: url("../char.png") no-repeat -45px 0px; */
+
+}
+
+.char {
+    border: 1px solid black;
+    display: inline-block;
+    
+}
