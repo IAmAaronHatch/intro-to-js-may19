@@ -1,0 +1,33 @@
+
+
+a {
+    text-decoration: none;
+    color: #2d3436;
+}
+
+.project-container {
+    height: 150px;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    
+}
+
+.project {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fab1a0;
+    
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+}
+.project:hover {
+    height: 130px;
+    width: 130px;
+    background-color: #e17055;
+    
+}
