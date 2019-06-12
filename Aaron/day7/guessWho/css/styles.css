@@ -15,3 +15,8 @@ div.container {
     display: inline-block;
     
 }
+
+textarea {
+    width: 50%;
+    height: 100px;
+}
