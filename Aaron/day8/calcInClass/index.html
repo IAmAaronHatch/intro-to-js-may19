@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Calc </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        button {
+            width: 30%;
+            height: 10vh;
+            background-color: rgb(255, 201, 102);
+            font-size: 40px;
+            border-radius: 10px;
+        }
+
+        button:hover {
+            background-color: rgb(255, 181, 44);
+            font-size: 50px;
+        }
+
+        .numbers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            height: 70vh;
+            grid-area: nb;
+        }
+
+        .ar {
+            grid-area: ar;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .ar button {
+            width: 100%;
+            height: 10%;
+        }
+
+        .ac {
+            grid-area: ac;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .ac button {
+            width: 30%;
+        }
+
+        .wrapper {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(100px, auto);
+            grid-template-areas: "ac ac ac ar" "nb nb nb ar" "nb nb nb ar" "nb nb nb ar" "nb nb nb ar";
+            background-color: lightblue;
+            border: 2px solid black;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <input type="text" style="width: 100%; font-size: 4em;" value="0">
+        <div class="wrapper">
+            <div class="numbers">
+                <button> 7 </button>
+                <button> 8 </button>
+                <button> 9 </button>
+
+                <button> 4 </button>
+                <button> 5 </button>
+                <button> 6 </button>
+
+                <button> 1 </button>
+                <button> 2 </button>
+                <button> 3 </button>
+
+                <button style="width: 50%"> 0 </button>
+                <button> . </button>
+            </div>
+
+            <div class="ar">
+                <button> / </button>
+                <button> * </button>
+                <button> - </button>
+                <button> + </button>
+                <button> = </button>
+            </div>
+
+            <div class="ac">
+                <button> AC </button>
+                <button> Sign </button>
+                <button> % </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('button');
+        const textArea = document.querySelector('input');
+
+        buttons.forEach(function (button) {
+            button.addEventListener('click', function () {
+
+                switch (this.innerText) {
+                    case 'AC':
+                        textArea.value = '0';
+                        break;
+                    case 'Sign':
+                        if (textArea.value) {
+                            textArea.value = -Number(textArea.value);
+                        }
+                        break;
+                    case '=':
+                        textArea.value = eval(textArea.value);
+                        break;
+                    case '%':
+                        textArea.value = Number(textArea.value / 100);
+                        break;
+                    default:
+                        if (textArea.value === '0') {
+                            textArea.value = '';
+                        }
+                        textArea.value += this.innerText;
+
+                }
+
+            })
+        })
+    </script>
+
+</body>
+
+</html>

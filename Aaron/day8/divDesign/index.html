@@ -1,25 +1,76 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title> div design </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+
+    <style>
+        body * {
+            font-size: 3em;
+        }
+
+        .big {
+            font-size: 4em;
+            background-color: lightblue;
+            color: black;
+
+        }
+        .small {
+            font-size: 1em;
+            background-color: lightcoral;
+            color: rgb(219, 219, 219);
+        }
+    </style>
 </head>
+
 <body>
 
     <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
 
-    <input type="text">
-    <input type="text">
+    <input type="text" placeholder="property">
+    <input type="text" placeholder="value">
+    <input type="text" placeholder="which one?">
 
     <button> Click </button>
-    
+
     <script>
-        const div = document.querySelector('div');
-        const inputs = document.querySelector('input');
+
+        // targeting the first div
+        const divs = document.querySelectorAll('div');
+        const inputs = document.querySelectorAll('input');
         const button = document.querySelector('button');
+        // const p = document.querySelector('p');
+
+        // listener
+        button.addEventListener('click', function () {
+            
+            // get input values
+            const input1Value = inputs[0].value;
+            const input2Value = inputs[1].value;
+            const input3Value = inputs[2].value;
+
+            if (input1Value === 'innerHTML') {
+                divs[input3Value].innerHTML = input2Value;
+            } else if (input1Value === 'class') {
+                divs[input3Value].classList.add(input2Value);
+            } else {
+                divs[input3Value].style[input1Value] = input2Value;
+            };
+
+            // inputs[0].value = '';
+            // inputs[1].value = '';
+
+        })
     </script>
 </body>
+
 </html>
