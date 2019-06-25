@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Random </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .container {
+            font-size: 2em;
+            margin: 50px;
+        }
+
+        .strike-through {
+            text-decoration: line-through;
+        }
+
+        .capital {
+            text-transform: capitalize;
+        }
+
+        .userCard {
+            background-color: lightblue;
+            margin: 1em;
+            color: white;
+            padding: 2em;
+        }
+
+        .name {
+            text-align: center;
+        }
+
+        .divider {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+    </div>
+
+    <script>
+
+        const createEl = function (kind, html) {
+            const el = document.createElement(kind);
+            el.innerHTML = html;
+
+            return el;
+        };
+
+        const container = document.querySelector('.container');
+        for (let i = 0; i < 10; i++) {
+            const el = createEl('p', i);
+            el.style.backgroundColor = 'blue';
+            el.style.fontSize = '2em';
+
+            el.addEventListener('mouseenter', function () {
+                if (this.nextSibling) {
+                    this.nextSibling.style.fontSize = '3em';
+                    this.nextSibling.style.backgroundColor = 'red';
+                };
+            });
+            el.addEventListener('mouseleave', function () {
+                if (this.nextSibling) {
+                    this.nextSibling.style.fontSize = '2em';
+                    this.nextSibling.style.backgroundColor = 'blue';
+                };
+            });
+
+            el.addEventListener('click', function () {
+                if (el.previousElementSibling) {
+                    el.parentNode.insertBefore(el, el.previousSibling)
+                }
+            })
+            container.appendChild(el);
+
+        }
+
+
+        const myArray = [
+            {
+                name: 'Aaron',
+                git: 'IAmAaronHatch',
+                email: 'aaronhatch1218@gmail.com'
+            },
+            {
+                name: 'Vinson',
+                git: 'geekwisevinson',
+                email: 'vinsonfernandez@gmail.com'
+            },
+            {
+                name: 'Renee',
+                git: 'reneeharder',
+                email: 'reneeharder@gmail.com'
+            },
+            {
+                name: 'Angelo',
+                git: 'trentSena',
+                email: 'tsena16@gmail.com'
+            },
+            {
+                name: 'Jacob',
+                git: 'jakeAguilar',
+                email: 'aguilarjacob23@gmail.com'
+            }
+        ];
+
+
+        const div = document.createElement('div');
+        function showUsers() {
+
+            div.innerHTML = '';
+
+            myArray.forEach(createUser);
+
+        };
+        function createUser(user) {
+            div.classList.add('userCard');
+            document.body.appendChild(div);
+            const h1 = document.createElement('h1');
+            h1.classList.add('name');
+            h1.innerText = user.name;
+            h1.classList.add('capital');
+            div.appendChild(h1);
+            const divider = document.createElement('div');
+            divider.classList.add('divider');
+            div.appendChild(divider);
+            const git = document.createElement('div');
+            const email = document.createElement('div');
+            divider.appendChild(git);
+            divider.appendChild(email);
+
+            email.innerText = user.email;
+            git.innerText = user.git;
+
+        };
+
+
+
+        function animationFrame() {
+            showUsers();
+            window.requestAnimationFrame(animationFrame);
+        };
+        animationFrame();
+
+
+        setInterval(function(){
+            myArray.sort((a,b) => {
+                return Math.random() > .5 ? 1 : -1;
+            })
+        }, 3000)
+
+    </script>
+
+</body>
+
+</html>
